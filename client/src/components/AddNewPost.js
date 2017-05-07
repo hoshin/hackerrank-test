@@ -1,20 +1,6 @@
 import React from 'react'
-import {
-  gql,
-  graphql,
-} from 'react-apollo'
-
-const postsListQuery = gql`
-  query PostsListQuery {
-    posts {
-      id
-      pageURL
-      posterNick
-      pageTitle
-      upvotes
-    }
-  }
-`
+import { graphql } from 'react-apollo'
+import gql from '../util/graphql'
 
 const AddNewPost = ({ mutate }) => {
   let saveNewLinkAndResetForm = function() {
@@ -23,7 +9,7 @@ const AddNewPost = ({ mutate }) => {
         posterNick: document.getElementById('posterNick').value,
         pageURL: document.getElementById('postURL').value
       },
-      refetchQueries: [{ query: postsListQuery }]
+      refetchQueries: [{ query: gql.postsListQuery }]
     })
     .then(() => {
       document.getElementById('posterNick').value = ''
@@ -67,20 +53,8 @@ const AddNewPost = ({ mutate }) => {
   )
 }
 
-const addPostMutation = gql`
-  mutation addPost($pageURL: String!, $posterNick: String!) {
-    addPost(posterNick: $posterNick, pageURL: $pageURL) {
-      id
-      posterNick
-      pageURL
-      upvotes
-      pageTitle
-    }
-  }
-`
-
 const AddPostWithMutation = graphql(
-    addPostMutation
+    gql.addPostMutation
 )(AddNewPost)
 
 export default AddPostWithMutation

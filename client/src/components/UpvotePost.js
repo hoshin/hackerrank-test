@@ -1,27 +1,13 @@
 import React from 'react';
-import {
-    gql,
-    graphql,
-} from 'react-apollo';
-
-const postsListQuery = gql`
-  query PostsListQuery {
-    posts {
-      id
-      pageURL
-      posterNick
-      pageTitle
-      upvotes
-    }
-  }
-`;
+import { graphql } from 'react-apollo'
+import gql from '../util/graphql'
 
 const UpvotePost = ({postId, mutate}) => {
     const upvote = (evt) => {
         evt.persist();
         mutate({
             variables: { postId: postId },
-            refetchQueries: [ { query: postsListQuery }]
+            refetchQueries: [ { query: gql.postsListQuery }]
         })
         .catch( err => {
             console.log(err);
@@ -33,20 +19,8 @@ const UpvotePost = ({postId, mutate}) => {
     );
 };
 
-const upvotePostMutation = gql`
-  mutation upvotePost($postId: String!) {
-    upvotePost(postId: $postId) {
-      id
-      posterNick
-      pageURL
-      upvotes
-      pageTitle
-    }
-  }
-`;
-
 const UpvotePostMutation = graphql(
-    upvotePostMutation
+    gql.upvotePostMutation
 )(UpvotePost);
 
 export default UpvotePostMutation;

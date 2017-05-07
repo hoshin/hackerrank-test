@@ -1,25 +1,11 @@
 import React from 'react';
-import {
-    gql,
-    graphql,
-} from 'react-apollo';
+import { graphql } from 'react-apollo'
+import gql from '../util/graphql'
 
 import UpvotePostMutation from './DownvotePost';
 import DownvotePostMutation from './UpvotePost';
 
-const postsListQuery = gql`
-  query PostsListQuery {
-    posts {
-      id
-      pageURL
-      posterNick
-      pageTitle
-      upvotes
-    }
-  }
-`;
-
-const PostsList = ({ data: { loading, error, posts }, mutate }) => {
+const PostsList = ({ data: { loading, error, posts } }) => {
     if (loading) {
         return <p>Loading ...</p>;
     }
@@ -38,4 +24,4 @@ const PostsList = ({ data: { loading, error, posts }, mutate }) => {
     );
 };
 
-export default graphql(postsListQuery)(PostsList);
+export default graphql(gql.postsListQuery)(PostsList);
