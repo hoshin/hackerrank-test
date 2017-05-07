@@ -5,19 +5,17 @@ import {
 
 import { schema } from '../models/schema/schema';
 class PostController {
-    constructor() {
+    constructor() {}
 
-    }
-
-    list(req, res) {
+    posts(req, res) {
         return (graphqlExpress({ schema }))(req, res);
     }
 
-    graphiqlContoller(req, res) {
+    graphiqlController(req, res) {
         return (graphiqlExpress({
             endpointURL: '/posts'
         }))(req, res);
     };
 }
 
-module.exports = PostController;
+export default PostController;

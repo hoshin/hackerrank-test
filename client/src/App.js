@@ -8,12 +8,6 @@ import {
     createNetworkInterface
 } from 'react-apollo';
 
-
-import { makeExecutableSchema } from 'graphql-tools';
-import { typeDefs } from './schema';
-
-const schema = makeExecutableSchema({ typeDefs });
-
 const networkInterface = createNetworkInterface({
     uri: 'http://localhost:4000/posts',
 });
@@ -27,7 +21,7 @@ class App extends Component {
         return (
             <ApolloProvider client={client}>
                 <div className="App">
-                    <div className="navbar">React + GraphQL Tutorial</div>
+                    <div className="navbar">Hackerrank-like test app</div>
                     <PostsListWithData />
                 </div>
             </ApolloProvider>
