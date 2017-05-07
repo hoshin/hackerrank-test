@@ -18,11 +18,11 @@ a:hover, a:visited, a:active, a {
     width:100%;
     text-align:center;
     padding-top:12px;
+    padding-bottom:12px;
 }
 
 .new-post-form {
     padding-top:10%;
-
 }
 
 .new-post-form .form-fields {
@@ -117,4 +117,9 @@ div.postsList input:focus {
 
 div.post span {
   float:right;
+}
+
+.navbar span {
+    font-size:0.75em;
+    margin:0 5px 0 5px;
 }
