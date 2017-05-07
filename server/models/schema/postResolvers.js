@@ -1,7 +1,7 @@
 import mongoose from 'mongoose'
 import config from '../../config/base'
 import PostSchema from '../mongo/post'
-import request from 'request'
+import rp from 'request-promise'
 import cheerio from 'cheerio'
 
 class PostResolvers {
@@ -24,24 +24,23 @@ class PostResolvers {
       },
       Mutation: {
         addPost: (root, args) => {
-          request.get(args.pageURL, (err, response, body) => {
-            if (!err && response.statusCode < 400) {
-              let parsedPageTitle
-              let $ = cheerio.load(body)
-              parsedPageTitle = $('title').text() || 'No title available'
-              const newPost = new PostModel({
-                posterNick: args.posterNick,
-                pageURL: args.pageURL,
-                pageTitle: parsedPageTitle,
-                upvotes: 0
-              })
-              return newPost.save()
-              .then(data => {
-                return data
-              }).catch(() => {
-                return new Error('Ouch (addPost)!')
-              })
+          if(!args.pageURL.match(/^(http[s]?:\/\/).+/)){
+            args.pageURL = `http://${args.pageURL}`
+          }
+          const options = {
+            uri: args.pageURL,
+            transform: function (body) {
+              return cheerio.load(body);
             }
+          }
+          return rp.get(options)
+          .then($ => {
+            return this.saveNewPost(PostModel, {
+              posterNick: args.posterNick,
+              pageURL: args.pageURL,
+              pageTitle: this.parsePageTitle($),
+              upvotes: 0
+            })
           })
         },
         upvotePost: (root, args) => {
@@ -53,6 +52,20 @@ class PostResolvers {
         }
       }
     }
+  }
+
+  parsePageTitle ($) {
+    return $('title').text() || 'No title available'
+  }
+
+  saveNewPost (PostModel, newPostData) {
+    const newPost = new PostModel(newPostData)
+    return newPost.save()
+    .then(data => {
+      return data
+    }).catch(() => {
+      return new Error('Ouch (addPost)!')
+    })
   }
 
   updatePostVotes (PostModel, args, increment, type) {
