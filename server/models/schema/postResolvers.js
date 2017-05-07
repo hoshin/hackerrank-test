@@ -4,7 +4,6 @@ import PostSchema from '../mongo/post'
 import request from 'request'
 import cheerio from 'cheerio'
 
-
 class PostResolvers {
   constructor () {
     const PostModel = mongoose.model('post', PostSchema)
@@ -19,7 +18,7 @@ class PostResolvers {
             return data
           })
           .catch(() => {
-            return null;
+            return null
           })
         }
       },
@@ -46,11 +45,11 @@ class PostResolvers {
           })
         },
         upvotePost: (root, args) => {
-          return this.updatePostVotes(PostModel, args, 1, 'up');
+          return this.updatePostVotes(PostModel, args, 1, 'up')
         },
 
         downvotePost: (root, args) => {
-          return this.updatePostVotes(PostModel, args, -1, 'down');
+          return this.updatePostVotes(PostModel, args, -1, 'down')
         }
       }
     }
@@ -61,10 +60,10 @@ class PostResolvers {
     .then(postToUpvote => {
       postToUpvote.upvotes += increment
       return postToUpvote.save().then(() => {
-        return postToUpvote;
+        return postToUpvote
       })
       .catch(() => {
-        return new Error(`Ouch (${type}vote post save)!`);
+        return new Error(`Ouch (${type}vote post save)!`)
       })
     })
     .catch(() => {

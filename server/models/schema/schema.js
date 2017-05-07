@@ -1,8 +1,8 @@
 import {
-  makeExecutableSchema,
-} from 'graphql-tools';
-import PostResolvers from './postResolvers';
-const resolvers = new PostResolvers().resolvers;
+  makeExecutableSchema
+} from 'graphql-tools'
+import PostResolvers from './postResolvers'
+const resolvers = new PostResolvers().resolvers
 
 const typeDefs = `
 
@@ -23,7 +23,7 @@ type Mutation {
   upvotePost(postId: String!): Post
   downvotePost(postId: String!): Post
 }
-`;
+`
 
-const schema = makeExecutableSchema({ typeDefs, resolvers });
-export { schema };
+const schema = makeExecutableSchema({ typeDefs, resolvers })
+export { schema }

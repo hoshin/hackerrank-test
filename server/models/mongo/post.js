@@ -1,8 +1,8 @@
-import {Schema} from 'mongoose'
+import { Schema } from 'mongoose'
 
 export default new Schema({
-    pageURL: String,
-    posterNick: String,
-    pageTitle: String,
-    upvotes: Number
-});
+  pageURL: String,
+  posterNick: String,
+  pageTitle: String,
+  upvotes: Number
+})

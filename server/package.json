@@ -4,8 +4,10 @@
   "description": "'Hackernews like' app",
   "main": "index.js",
   "scripts": {
-    "test": "mocha ./test/*.js",
-    "start": "nodemon ./index.js --exec babel-node -e js"
+    "test": "mocha --compilers js:babel-core/register --recursive ./test ",
+    "start": "nodemon ./index.js --exec babel-node -e js",
+    "lint": "./node_modules/.bin/eslint --ignore-pattern=qualimetry .",
+    "coverage": "istanbul cover _mocha --dir qualimetry/coverage -- --compilers js:babel-core/register -R spec --recursive"
   },
   "author": "Martin Bahier",
   "license": "ISC",
@@ -27,7 +29,13 @@
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "chai": "^3.5.0",
-    "istanbul": "^0.4.5",
+    "eslint": "^3.19.0",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-node": "^4.2.2",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "istanbul": "^1.0.0-alpha.2",
     "mocha": "^3.3.0",
     "nightmare": "^2.10.0",
     "nodemon": "^1.11.0",
