@@ -4,7 +4,6 @@ import {
     graphql,
 } from 'react-apollo';
 
-import AddPostWithMutation from './AddNewPost';
 import UpvotePostMutation from './DownvotePost';
 import DownvotePostMutation from './UpvotePost';
 
@@ -19,7 +18,6 @@ const PostsList = ({ data: { loading, error, posts }, mutate }) => {
 
     return (
         <div className="postsList">
-            <AddPostWithMutation />
             <div className="section-title">List of links</div>
             { posts.map(post => <div key={post.id} className="post">
                 <a href={post.pageURL}>{post.pageTitle || 'No title available'}</a> by {post.posterNick}
