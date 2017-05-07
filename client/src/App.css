@@ -16,6 +16,8 @@ a:hover, a:visited, a:active, a {
 .section-title {
     color:white;
     width:100%;
+    text-align:center;
+    padding-top:12px;
 }
 
 .new-post-form {
