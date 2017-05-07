@@ -47,6 +47,7 @@ const AddNewPost = ({ mutate }) => {
 
   return (
       <div className="new-post-form">
+        <div className="form-fields">
         <div className="section-title">Add a new link</div>
         <input
             id="postURL"
@@ -61,6 +62,7 @@ const AddNewPost = ({ mutate }) => {
             onKeyUp={handleKeyUp}
         />
         <a href="#" onClick={handleButtonClick}>Add it !</a>
+        </div>
       </div>
   )
 }
