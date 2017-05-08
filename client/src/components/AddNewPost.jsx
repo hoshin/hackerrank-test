@@ -3,7 +3,7 @@ import { graphql } from 'react-apollo'
 import gql from '../util/graphql'
 
 const AddNewPost = ({ mutate }) => {
-  let saveNewLinkAndResetForm = function() {
+  const saveNewLinkAndResetForm = () => {
     mutate({
       variables: {
         posterNick: document.getElementById('posterNick').value,
@@ -22,32 +22,32 @@ const AddNewPost = ({ mutate }) => {
   const handleKeyUp = (evt) => {
     if (evt.keyCode === 13) {
       evt.persist()
-      saveNewLinkAndResetForm();
+      saveNewLinkAndResetForm()
     }
   }
 
   const handleButtonClick = (evt) => {
     evt.persist()
-    saveNewLinkAndResetForm();
+    saveNewLinkAndResetForm()
   }
 
   return (
       <div className="new-post-form">
         <div className="form-fields">
-        <div className="section-title">Add a new link</div>
-        <input
-            id="postURL"
-            type="text"
-            placeholder="New Post URL"
-            onKeyUp={handleKeyUp}
-        />
-        <input
-            id="posterNick"
-            type="text"
-            placeholder="Nick"
-            onKeyUp={handleKeyUp}
-        />
-        <a href="#" onClick={handleButtonClick}>Add it !</a>
+          <div className="section-title">Add a new link</div>
+          <input
+              id="postURL"
+              type="text"
+              placeholder="New Post URL"
+              onKeyUp={handleKeyUp}
+          />
+          <input
+              id="posterNick"
+              type="text"
+              placeholder="Nick"
+              onKeyUp={handleKeyUp}
+          />
+          <a href="#" onClick={handleButtonClick}>Add it !</a>
         </div>
       </div>
   )

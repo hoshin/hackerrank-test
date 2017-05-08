@@ -20,7 +20,7 @@ export default {
       pageTitle
     }
   }`,
-  downvotePostMutation : gql`
+  downvotePostMutation: gql`
   mutation downvotePost($postId: String!) {
     downvotePost(postId: $postId) {
       id
@@ -30,7 +30,7 @@ export default {
       pageTitle
     }
   }`,
-  addPostMutation : gql`
+  addPostMutation: gql`
   mutation addPost($pageURL: String!, $posterNick: String!) {
     addPost(posterNick: $posterNick, pageURL: $pageURL) {
       id
