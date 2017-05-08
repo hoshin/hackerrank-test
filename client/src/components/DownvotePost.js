@@ -15,7 +15,7 @@ const DownvotePost = ({postId, mutate}) => {
     };
 
     return (
-        <a href="#" postId={postId} onClick={downvote} title="Downvote">[-]</a>
+        <a href="#" onClick={downvote} title="Downvote">[-]</a>
     );
 };
 

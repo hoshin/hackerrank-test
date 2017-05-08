@@ -15,7 +15,7 @@ const UpvotePost = ({postId, mutate}) => {
     };
 
     return (
-        <a href="#" postId={postId} onClick={upvote} title="Upvote">[+]</a>
+        <a href="#" onClick={upvote} title="Upvote">[+]</a>
     );
 };
 
