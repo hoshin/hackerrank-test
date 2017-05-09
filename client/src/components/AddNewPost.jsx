@@ -47,7 +47,7 @@ const AddNewPost = ({ mutate }) => {
               placeholder="Nick"
               onKeyUp={handleKeyUp}
           />
-          <a href="#" onClick={handleButtonClick}>Add it !</a>
+          <a href="#" id="addPage" onClick={handleButtonClick}>Add it !</a>
         </div>
       </div>
   )
