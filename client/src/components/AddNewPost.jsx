@@ -37,12 +37,14 @@ const AddNewPost = ({ mutate }) => {
           <div className="section-title">Add a new link</div>
           <input
               id="postURL"
+              name="postURL"
               type="text"
               placeholder="New Post URL"
               onKeyUp={handleKeyUp}
           />
           <input
               id="posterNick"
+              name="posterNick"
               type="text"
               placeholder="Nick"
               onKeyUp={handleKeyUp}
