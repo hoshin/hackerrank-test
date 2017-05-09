@@ -34,6 +34,7 @@
   },
   "scripts": {
     "start": "PORT=9000 react-scripts start",
+    "run": "PORT=9000 ./scripts/run.sh",
     "build": "react-scripts build",
     "test": "mocha --compilers js:babel-core/register --recursive ./test ",
     "eject": "react-scripts eject"
