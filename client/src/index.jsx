@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import { Router, Route, browserHistory, IndexRoute } from 'react-router'
 import App from './App'
 import AddNewPost from './components/AddNewPost'
-import PostsListWithData from './components/PostsListWithData'
+import PostsListWithData from './components/PostsList'
 import './index.css'
 import deadLink from '../public/dead-link.jpg'
 
